@@ -12,16 +12,12 @@ class HelloController {
   protected $logger;
   protected $calculator;
 
-  public function __construct(LoggerInterface $logger) {
-    $this->logger = $logger;
-  }
-
   /**
    * @Route("/hello/{prenom<\p{L}+>?World}", 
    * name="hello")
    */
-  public function hello($prenom, Calculator $calculator) {
-    $this->logger->error("Mon message de log");
+  public function hello($prenom, LoggerInterface $logger, Calculator $calculator) {
+    $logger->error("Mon message de log");
     $tva = $calculator->calcul(100);
 
     dump($tva);
