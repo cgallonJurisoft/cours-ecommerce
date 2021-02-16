@@ -32,7 +32,7 @@ class HelloController {
 
     dump($tva);
 
-    dump("////////// Exo 1 : //////////");
+    dump("////////// Exo 2 : //////////");
     dump($detector->detect(150));
     dump($detector->detect(50));
     dump("//////////////////////////////");
