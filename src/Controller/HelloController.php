@@ -7,6 +7,7 @@ use Cocur\Slugify\Slugify;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 class HelloController {
 
@@ -17,7 +18,7 @@ class HelloController {
    * @Route("/hello/{prenom<\p{L}+>?World}", 
    * name="hello")
    */
-  public function hello($prenom, LoggerInterface $logger, Calculator $calculator, Slugify $slugify) {
+  public function hello($prenom, LoggerInterface $logger, Calculator $calculator, Slugify $slugify, Environment $twig) {
     // $slugify = new Slugify();
 
     dump($slugify->slugify("Hello World"));
