@@ -8,7 +8,21 @@
 </head>
 <body>
 
-  <h1>Bonjour {{ prenom }}</h1>
+  <h1>Bonjour {{ prenom }}.</h1>
+  <p>Vous avez {{ age }} ans.</p>
+  <p>Vous êtes un {% if age >= 18 %}adulte{% else %}enfant{% endif %}.</p>
+
+  <ul>
+    {% for personne in prenoms %}
+      <li>{{ personne | upper }}</li>
+    {% endfor %}
+  </ul>
+
+  <ul>
+    {% for i in 1..10 %}
+      <li>Numéro {{ i }}</li>
+    {% endfor %}
+  </ul>
 
 </body>
 </html>
