@@ -23,11 +23,11 @@ class HelloController {
 
     $html = $twig->render('hello.html.twig', [
       'prenom' => $prenom,
-      'age' => 33,
-      'prenoms' => [
-        'Lior',
-        'Bob',
-        'Emma',
+      'ages' => [
+        12,
+        18,
+        29,
+        15,
       ]
     ]);
     return new Response($html);
