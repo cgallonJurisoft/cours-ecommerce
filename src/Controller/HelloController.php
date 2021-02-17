@@ -2,21 +2,10 @@
 
 namespace App\Controller;
 
-use App\Taxes\Calculator;
-use App\Taxes\Detector;
-use Cocur\Slugify\Slugify;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HelloController {
-
-  protected $twig;
-
-  public function __construct(Environment $twig) {
-    $this->twig = $twig;
-  }
+class HelloController extends AbstractController {
 
   /**
    * @Route("/hello/{prenom?World}", 
@@ -38,8 +27,4 @@ class HelloController {
     ]);
   } 
 
-  protected function render(string $path, array $varibles = []) {
-    $html = $this->twig->render($path, $varibles);
-    return new Response($html);
-  } 
 }
