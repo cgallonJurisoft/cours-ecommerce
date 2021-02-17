@@ -12,29 +12,34 @@ use Twig\Environment;
 
 class HelloController {
 
-  protected $logger;
-  protected $calculator;
+  protected $twig;
+
+  public function __construct(Environment $twig) {
+    $this->twig = $twig;
+  }
 
   /**
-   * @Route("/hello/{prenom<\p{L}+>?World}", 
+   * @Route("/hello/{prenom?World}", 
    * name="hello")
    */
-  public function hello($prenom, Environment $twig) {
-
-    $html = $twig->render('hello.html.twig', [
+  public function hello($prenom) {
+    return $this->render('hello.html.twig', [
       'prenom' => $prenom,
-      'formateur1' => [
-        'prenom' => 'Lior',
-        'nom' => 'Chamla',
-        'age' => 33
-      ],
-      'formateur2' => [
-        'prenom' => 'Stephanie',
-        'nom' => 'Loukoum',
-        'age' => 48
-      ]
     ]);
-    return new Response($html);
+  } 
 
+  /**
+   * @Route("/exemple", 
+   * name="exemple")
+   */
+  public function exemple() {
+    return $this->render('exemple.html.twig', [
+      'age' => 33,
+    ]);
+  } 
+
+  protected function render(string $path, array $varibles = []) {
+    $html = $this->twig->render($path, $varibles);
+    return new Response($html);
   } 
 }
